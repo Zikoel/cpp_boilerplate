@@ -1,0 +1,30 @@
+project(cxxopts-download NONE)
+cmake_minimum_required(VERSION 3.9)
+
+include(ExternalProject)
+
+ExternalProject_Add(
+    cxxopts
+    GIT_REPOSITORY    git@github.com:jarro2783/cxxopts.git
+    GIT_TAG           v2.0.0
+    DOWNLOAD_DIR      ${CXXOPTS_DEPS_DIR}
+    TMP_DIR           ${CXXOPTS_DEPS_DIR}/tmp
+    STAMP_DIR         ${CXXOPTS_DEPS_DIR}/stamp
+    SOURCE_DIR        ${CXXOPTS_DEPS_DIR}/cxxopts
+    BINARY_DIR        ${CXXOPTS_DEPS_DIR}/build
+    CMAKE_ARGS        ""
+    BUILD_COMMAND     ""
+    INSTALL_COMMAND   ""
+    TEST_COMMAND      ""
+)
+
+
+ExternalProject_Add_Step(
+    cxxopts
+    custom-install
+    WORKING_DIRECTORY <BINARY_DIR>
+    COMMENT           "Installing cxxopts"
+    DEPENDEES         build
+    COMMAND           ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/3rdparty/cxxopts/include
+    COMMAND           ${CMAKE_COMMAND} -E copy  <SOURCE_DIR>/include/cxxopts.hpp ${CMAKE_SOURCE_DIR}/3rdparty/cxxopts/include
+)
