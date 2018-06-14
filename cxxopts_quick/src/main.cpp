@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
             ("h,help", "Show this help");
 
     auto result = options.parse(argc, argv);
-    if ( result.count("help") != 0 ) {
+    if ( result.count("help") != 0 || argc < 2 ) {
         std::cout << options.help() << std::endl;
         return 0;
     }
