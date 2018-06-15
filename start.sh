@@ -1,13 +1,19 @@
 #!/bin/bash
 
-template=${1:-"cxxopts_quick"}
+template=${1:-"NONE"}
 projName=${2:-"DUMB"}
 path=${3:-"./pathGoHere"}
+
+if [ ${template} = "NONE" ];
+   then
+   echo -e "Template available:"
+   ls  -d */
+   exit
+fi
 
 echo -e "creating project: ${projName}"
 echo -e "        template: ${template}"
 echo -e "            path: ${path}\n"
-
 
 # check if path exists; if not, create a new directory and warn the user
 if [ ! -d ${path} ];
