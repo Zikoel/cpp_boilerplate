@@ -39,7 +39,7 @@ if [ -d ${path}/${projName} ];
 else
 
     mkdir ${path}/${projName}
-    cp -r ${template}/* ${path}/${projName}
+    cp -r ${template}/. ${path}/${projName}
 
     # creating ChangeLog
     sed -i 's/___project_name___/'${projName}'/g' ${path}/${projName}/CMakeLists.txt
