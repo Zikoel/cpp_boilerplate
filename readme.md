@@ -1,6 +1,6 @@
 Very stupid cpp project templates with some mininal dependecy resolved.
 
-The use is leave very simple, more complex one have no sense due the fact that there are most powerfull tools for that.
+The use is left very simple, more complex one have no sense due the fact that there are most powerfull tools for that.
 
 ## Usage
 
@@ -13,3 +13,4 @@ The use is leave very simple, more complex one have no sense due the fact that t
 ## Available templates
  * `cxxopts_quick`: Simple minimal project with [cxxopts](https://github.com/jarro2783/cxxopts) resolved.
  * `args_quick`: Simple minimal project with [args](https://github.com/Taywee/args) resolved.
+ * `empty`: A very simple empty cmake based cpp program.
