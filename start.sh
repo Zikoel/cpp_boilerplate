@@ -4,6 +4,8 @@ template=${1:-"NONE"}
 projName=${2:-"DUMB"}
 path=${3:-"./pathGoHere"}
 
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
 if [ ${template} = "NONE" ];
    then
    echo -e "Template available:"
@@ -24,7 +26,7 @@ fi
 
 
 # check if the template exists; if not, print error and exit
-if [ ! -d ${template} ];
+if [ ! -d ${SCRIPTPATH}/${template} ];
    then
    echo -e "***FATAL*** template ${template} not found, specify an existing one\n"
    exit
@@ -39,7 +41,7 @@ if [ -d ${path}/${projName} ];
 else
 
     mkdir ${path}/${projName}
-    cp -r ${template}/. ${path}/${projName}
+    cp -r ${SCRIPTPATH}/${template}/. ${path}/${projName}
 
     # creating ChangeLog
     sed -i 's/___project_name___/'${projName}'/g' ${path}/${projName}/CMakeLists.txt
