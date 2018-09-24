@@ -8,8 +8,8 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 if [ ${template} = "NONE" ];
    then
-   echo -e "Template available:"
-   ls  -d */
+   echo -e "Usage: <template> <project-name> <path-where-create-project-folder>\nTemplate available:"
+   for i in `ls -d1 $SCRIPTPATH/*/`; do basename $i; done
    exit
 fi
 
